@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{--accent:#4ADE80;--mq-dur:34s}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#000000;color:#FFFFFF;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  a{color:#8A8A85;text-decoration:none;-webkit-text-fill-color:currentColor}
+  a:hover{color:#FFFFFF}
+  button{-webkit-text-fill-color:currentColor}
+  ::selection{background:#4ADE80;color:#000000}
+  @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes scrollL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes scrollR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  @keyframes gpulse{0%,100%{box-shadow:0 0 4px rgba(74,222,128,.30);opacity:.9}50%{box-shadow:0 0 11px 3px rgba(74,222,128,.7);opacity:1}}
+  @keyframes wordRotate{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  [data-reveal].in{opacity:1!important;transform:none!important}
+</style>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</helmet>
+<div ref="{{ setRoot }}" style="position:relative">
+
+<header ref="{{ setHeader }}" style="position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,0);transition:background .3s ease,border-color .3s ease">
+  <div style="max-width:1180px;margin:0 auto;padding:0 24px;height:66px;display:flex;align-items:center;justify-content:space-between">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:18px;color:#FFFFFF">
+      <span style="width:22px;height:22px;border-radius:6px;background:#4ADE80;display:inline-block"></span>MIDIMONEY
+    </a>
+    <nav style="display:flex;align-items:center;gap:30px;font-size:14px;font-weight:500">
+      <a href="#features" style="color:#8A8A85">Features</a>
+      <a href="#pricing" style="color:#8A8A85">Pricing</a>
+      <a href="#faq" style="color:#8A8A85">FAQ</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:16px">
+      <a href="#top" style="color:#FFFFFF;font-size:14px;font-weight:600">Log in</a>
+      <a href="#pricing" style="background:#4ADE80;color:#000000;font-weight:700;font-size:14px;padding:9px 18px;border-radius:9px;transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 10px 26px rgba(74,222,128,.28);color:#000000">Start Free</a>
+    </div>
+  </div>
+</header>
+
+<section id="top" style="max-width:1000px;margin:0 auto;padding:clamp(28px,3.2vh,48px) clamp(24px,7vw,120px) clamp(8px,1.5vh,16px);text-align:center">
+  <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:#B8B8B2;margin-bottom:26px">
+    <span style="width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:gpulse 4.6s ease-in-out infinite"></span>We turn producers into entrepreneurs
+  </div>
+  <h1 data-reveal data-delay="80" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);margin:0;font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:1.0;font-size:clamp(32px,6.5vw,78px);text-wrap:balance">Producers. want to sell<br><span style="color:#4ADE80;display:inline-flex;align-items:center;justify-content:center;min-width:280px;min-height:1em" data-rotating-word="">beats</span>?</h1>
+  <h2 data-reveal data-delay="120" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);margin:clamp(20px,2.8vh,40px) 0 0;font-family:'Instrument Serif',serif;font-weight:400;text-transform:none;letter-spacing:0;line-height:1.2;font-size:clamp(28px,4.6vw,56px);text-wrap:balance;color:#FFFFFF">We'll show you how.</h2>
+  <p data-reveal data-delay="180" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);margin:clamp(16px,2.2vh,32px) 0 0;font-size:clamp(15px,2.4vw,28px);font-weight:600;letter-spacing:.14em;line-height:1.2;text-transform:uppercase;color:#8A8A85">10+ year track record. Ask about us.</p>
+</section>
+
+<section style="max-width:none;margin:0;padding:clamp(2px,0.8vh,8px) clamp(24px,5vw,72px) clamp(40px,6vh,72px)">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:44px;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);padding:clamp(24px,4vh,44px) 0;margin-bottom:clamp(28px,4.2vh,50px)">
+    <div data-reveal data-delay="460" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);text-align:left;position:relative">
+      <div data-count="10000" data-suffix="+" style="font-weight:900;letter-spacing:-.04em;line-height:.82;font-size:clamp(42px,5.6vw,80px);color:#FFFFFF">0</div>
+      <div data-statcopy style="opacity:0;transition:opacity .7s cubic-bezier(.16,1,.3,1);margin-top:12px">
+        <div style="font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4ADE80">producers</div>
+        <p style="margin:9px 0 0;max-width:260px;font-size:14.5px;line-height:1.5;color:#8A8A85">taught to become entrepreneurs.</p>
+      </div>
+    </div>
+    <div data-reveal data-delay="580" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);text-align:left;position:relative">
+      <div data-count="340000" data-prefix="$" style="font-weight:900;letter-spacing:-.04em;line-height:.82;font-size:clamp(42px,5.6vw,80px);color:#FFFFFF">$0</div>
+      <div data-statcopy style="opacity:0;transition:opacity .7s cubic-bezier(.16,1,.3,1);margin-top:12px">
+        <div style="font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4ADE80">beat sales</div>
+        <p style="margin:9px 0 0;max-width:270px;font-size:14.5px;line-height:1.5;color:#8A8A85">just what we can track — and doesn't include us. Just our students.</p>
+      </div>
+    </div>
+    <div data-reveal data-delay="700" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);text-align:left;position:relative">
+      <div data-count="2" style="font-weight:900;letter-spacing:-.04em;line-height:.82;font-size:clamp(42px,5.6vw,80px);color:#FFFFFF">0</div>
+      <div data-statcopy style="opacity:0;transition:opacity .7s cubic-bezier(.16,1,.3,1);margin-top:12px">
+        <div style="font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4ADE80">friends</div>
+        <p style="margin:9px 0 0;max-width:300px;font-size:14.5px;line-height:1.5;color:#8A8A85">Anno Domini and Legion Gabe did the impossible — well over $1M each selling beats. And taught a generation how we did it.</p>
+      </div>
+    </div>
+  </div>
+  <div data-reveal data-delay="260" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+    <a href="#pricing" style="background:#4ADE80;color:#000000;font-weight:700;font-size:16px;padding:16px 30px;border-radius:11px;transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 14px 36px rgba(74,222,128,.3);color:#000000">Start Selling Free</a>
+    <a href="#how" style="background:transparent;color:#FFFFFF;font-weight:600;font-size:16px;padding:16px 28px;border-radius:11px;border:1px solid rgba(255,255,255,.16);transition:border-color .25s ease,transform .25s ease" style-hover="border-color:rgba(255,255,255,.4);transform:translateY(-2px);color:#FFFFFF">Learn more</a>
+  </div>
+  <p data-reveal data-delay="340" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);margin:clamp(16px,2.4vh,28px) 0 0;font-size:13px;color:#5A5A55;letter-spacing:.02em;text-align:center">The secret? We teach universal direct response marketing techniques proven to work since before the internet.</p>
+</section>
+
+<section id="features" style="max-width:1040px;margin:0 auto;padding:clamp(50px,8vh,90px) clamp(24px,7vw,120px)">
+  <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);text-align:center">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:22px"><span style="width:6px;height:6px;border-radius:50%;background:#4ADE80"></span><span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#4ADE80">Conversion</span></div>
+    <h2 style="margin:0 auto;max-width:760px;font-weight:900;text-transform:uppercase;letter-spacing:-.025em;line-height:.98;font-size:clamp(30px,5vw,60px);text-wrap:balance">The best converting store on the internet.</h2>
+    <p style="max-width:560px;margin:22px auto 0;font-size:17px;line-height:1.55;color:#8A8A85">Most producers lose sales because checkout is slow. Yours converts the moment an artist wants to buy.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px">
+    <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);background:transparent;padding:6px 6px 0;position:relative">
+      <div style="font-weight:900;letter-spacing:-.045em;font-size:clamp(56px,7vw,92px);color:#4ADE80;line-height:.82">+22.3%</div>
+      <p style="position:relative;margin:-8px 0 0;max-width:240px;font-size:15px;line-height:1.5;color:#8A8A85">checkout conversion with one-tap Apple&nbsp;Pay</p>
+    </div>
+    <div data-reveal data-delay="120" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);background:transparent;padding:6px 6px 0;position:relative">
+      <div style="font-weight:900;letter-spacing:-.045em;font-size:clamp(56px,7vw,92px);line-height:.82">65%</div>
+      <p style="position:relative;margin:-8px 0 0;max-width:240px;font-size:15px;line-height:1.5;color:#8A8A85">faster than typing out a full card number</p>
+    </div>
+    <div data-reveal data-delay="240" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);background:transparent;padding:6px 6px 0;position:relative">
+      <div style="font-weight:900;letter-spacing:-.045em;font-size:clamp(56px,7vw,92px);line-height:.82">$0</div>
+      <p style="position:relative;margin:-8px 0 0;max-width:240px;font-size:15px;line-height:1.5;color:#8A8A85">commission on every single sale you make</p>
+    </div>
+  </div>
+</section>
+
+<div style="overflow:hidden;padding:clamp(60px,10vh,120px) 0;margin:clamp(20px,4vh,50px) 0;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)">
+  <div ref="{{ setMarquee }}" style="display:flex;width:max-content;animation:mq var(--mq-dur) linear infinite;will-change:transform">
+    <div style="display:flex;align-items:center;gap:56px;padding-right:56px">
+      <span style="font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-size:clamp(46px,7vw,96px);color:#232320">MIDIMONEY</span><span style="color:#232320;font-size:clamp(30px,4vw,52px)">✦</span>
+      <span style="font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-size:clamp(46px,7vw,96px);color:#232320">MIDIMONEY</span><span style="color:#232320;font-size:clamp(30px,4vw,52px)">✦</span>
+      <span style="font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-size:clamp(46px,7vw,96px);color:#232320">MIDIMONEY</span><span style="color:#232320;font-size:clamp(30px,4vw,52px)">✦</span>
+    </div>
+    <div aria-hidden="true" style="display:flex;align-items:center;gap:56px;padding-right:56px">
+      <span style="font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-size:clamp(46px,7vw,96px);color:#232320">MIDIMONEY</span><span style="color:#232320;font-size:clamp(30px,4vw,52px)">✦</span>
+      <span style="font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-size:clamp(46px,7vw,96px);color:#232320">MIDIMONEY</span><span style="color:#232320;font-size:clamp(30px,4vw,52px)">✦</span>
+      <span style="font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-size:clamp(46px,7vw,96px);color:#232320">MIDIMONEY</span><span style="color:#232320;font-size:clamp(30px,4vw,52px)">✦</span>
+    </div>
+  </div>
+</div>
+
+<section id="how" style="max-width:1040px;margin:0 auto;padding:clamp(50px,8vh,90px) clamp(24px,7vw,120px)">
+  <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);text-align:center;margin-bottom:56px">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:22px"><span style="width:6px;height:6px;border-radius:50%;background:#4ADE80"></span><span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#4ADE80">How it works</span></div>
+    <h2 style="margin:0;font-weight:900;text-transform:uppercase;letter-spacing:-.025em;line-height:.98;font-size:clamp(30px,5vw,60px)">Three steps</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+    <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);background:transparent;padding:6px 6px 0;position:relative">
+      <div style="font-weight:900;font-size:clamp(96px,12vw,150px);letter-spacing:-.05em;color:rgba(255,255,255,.06);line-height:.72">01</div>
+      <h3 style="position:relative;margin:-32px 0 14px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;font-size:22px">Upload beat</h3>
+      <p style="margin:0;font-size:15px;line-height:1.55;color:#8A8A85">Drop your audio file. We auto-detect BPM, key, and generate tags in seconds.</p>
+    </div>
+    <div data-reveal data-delay="120" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);background:transparent;padding:6px 6px 0;position:relative">
+      <div style="font-weight:900;font-size:clamp(96px,12vw,150px);letter-spacing:-.05em;color:rgba(255,255,255,.06);line-height:.72">02</div>
+      <h3 style="position:relative;margin:-32px 0 14px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;font-size:22px">Publish</h3>
+      <p style="margin:0;font-size:15px;line-height:1.55;color:#8A8A85">Your beat goes live as a video and a store listing. Checkout link placed automatically.</p>
+    </div>
+    <div data-reveal data-delay="240" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);background:transparent;padding:6px 6px 0;position:relative">
+      <div style="font-weight:900;font-size:clamp(96px,12vw,150px);letter-spacing:-.05em;color:rgba(74,222,128,.20);line-height:.72">03</div>
+      <h3 style="position:relative;margin:-32px 0 14px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;font-size:22px">Get paid</h3>
+      <p style="margin:0;font-size:15px;line-height:1.55;color:#8A8A85">Artists buy with Apple Pay, Google Pay, or PayPal. Money hits your account instantly.</p>
+    </div>
+  </div>
+</section>
+
+<section id="platforms" style="max-width:none;margin:0;padding:clamp(50px,8vh,90px) 0;overflow:hidden;position:relative">
+  <div style="position:absolute;inset:0;background:radial-gradient(620px 340px at 50% 14%,rgba(74,222,128,.11),transparent);pointer-events:none"></div>
+  <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);position:relative;text-align:center;margin-bottom:52px;padding:0 24px">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:22px"><span style="width:6px;height:6px;border-radius:50%;background:#4ADE80"></span><span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#4ADE80">Connections</span></div>
+    <h2 style="margin:0;font-weight:900;text-transform:uppercase;letter-spacing:-.025em;line-height:.9;font-size:clamp(30px,5vw,60px)">Everywhere your<br>fans listen</h2>
+  </div>
+  <div style="position:relative;-webkit-mask-image:linear-gradient(to right,transparent 2%,rgba(0,0,0,.55) 30%,#000 47%,#000 53%,rgba(0,0,0,.55) 70%,transparent 98%);mask-image:linear-gradient(to right,transparent 2%,rgba(0,0,0,.55) 30%,#000 47%,#000 53%,rgba(0,0,0,.55) 70%,transparent 98%);display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;width:max-content;animation:scrollL 28s linear infinite;will-change:transform">
+      <sc-for list="{{ row1 }}" as="ic" hint-placeholder-count="6"><div style="display:flex;gap:40px;padding-right:40px;flex-shrink:0"><div style="width:72px;height:72px;border-radius:16px;background:#141414;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#9A9A94;transition:border-color .4s ease,color .4s ease" style-hover="border-color:rgba(74,222,128,.5)"><iconify-icon icon="{{ ic }}" width="34"></iconify-icon></div></div></sc-for>
+      <sc-for list="{{ row1 }}" as="ic" hint-placeholder-count="6"><div style="display:flex;gap:40px;padding-right:40px;flex-shrink:0"><div style="width:72px;height:72px;border-radius:16px;background:#141414;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#9A9A94;transition:border-color .4s ease,color .4s ease" style-hover="border-color:rgba(74,222,128,.5)"><iconify-icon icon="{{ ic }}" width="34"></iconify-icon></div></div></sc-for>
+    </div>
+    <div style="display:flex;width:max-content;animation:scrollR 28s linear infinite;will-change:transform">
+      <sc-for list="{{ row2 }}" as="ic" hint-placeholder-count="6"><div style="display:flex;gap:40px;padding-right:40px;flex-shrink:0"><div style="width:72px;height:72px;border-radius:16px;background:#141414;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#9A9A94;transition:border-color .4s ease,color .4s ease" style-hover="border-color:rgba(74,222,128,.5)"><iconify-icon icon="{{ ic }}" width="34"></iconify-icon></div></div></sc-for>
+      <sc-for list="{{ row2 }}" as="ic" hint-placeholder-count="6"><div style="display:flex;gap:40px;padding-right:40px;flex-shrink:0"><div style="width:72px;height:72px;border-radius:16px;background:#141414;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#9A9A94;transition:border-color .4s ease,color .4s ease" style-hover="border-color:rgba(74,222,128,.5)"><iconify-icon icon="{{ ic }}" width="34"></iconify-icon></div></div></sc-for>
+    </div>
+  </div>
+  <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);position:relative;text-align:center;margin-top:56px;padding:0 24px">
+    <p style="margin:0 auto;max-width:440px;font-size:16px;line-height:1.6;color:#8A8A85">Your catalog stays yours. MIDIMONEY pushes every drop to the platforms your fans already live on — automatically.</p>
+    <div style="margin-top:30px"><a href="#pricing" style="display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;background:#4ADE80;color:#000000;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 32px rgba(74,222,128,.4);color:#000000">See all integrations</a></div>
+  </div>
+</section>
+
+<section style="max-width:none;margin:0;padding:clamp(50px,8vh,90px) clamp(24px,5vw,64px)">
+  <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);text-align:center;margin-bottom:52px">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:22px"><span style="width:6px;height:6px;border-radius:50%;background:#4ADE80"></span><span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#4ADE80">Testimonials</span></div>
+    <h2 style="margin:0;font-weight:900;text-transform:uppercase;letter-spacing:-.025em;line-height:.98;font-size:clamp(30px,5vw,60px)">Producers talk</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+    <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
+      <div data-reveal data-delay="{{ q.delay }}" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);background:#141414;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:30px;display:flex;flex-direction:column;gap:22px">
+        <p style="margin:0;font-size:16px;line-height:1.55;color:#DADAD5">{{ q.text }}</p>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:auto">
+          <span style="width:40px;height:40px;border-radius:50%;background:#222;display:flex;align-items:center;justify-content:center;font-weight:800;color:#4ADE80">{{ q.initial }}</span>
+          <div><div style="font-weight:700;font-size:14px">{{ q.name }}</div><div style="font-size:12.5px;color:#8A8A85">{{ q.role }}</div></div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="pricing" style="max-width:1040px;margin:0 auto;padding:clamp(50px,8vh,90px) clamp(24px,7vw,110px)">
+  <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);text-align:center;margin-bottom:52px">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:22px"><span style="width:6px;height:6px;border-radius:50%;background:#4ADE80"></span><span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#4ADE80">Pricing</span></div>
+    <h2 style="margin:0;font-weight:900;text-transform:uppercase;letter-spacing:-.025em;line-height:.98;font-size:clamp(30px,5vw,60px)">Simple pricing</h2>
+    <p style="max-width:480px;margin:20px auto 0;font-size:16px;color:#8A8A85">Start free. Upgrade when you're ready. Cancel anytime.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start">
+    <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);background:transparent;border:1px solid rgba(255,255,255,.10);border-radius:20px;padding:32px">
+      <div style="font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:#8A8A85">Free</div>
+      <div style="margin:16px 0 4px;font-weight:900;letter-spacing:-.03em;font-size:52px;line-height:1">$0<span style="font-size:16px;font-weight:600;color:#8A8A85">/forever</span></div>
+      <p style="margin:6px 0 24px;font-size:14px;color:#8A8A85">Start selling today.</p>
+      <a href="#top" style="display:block;text-align:center;background:transparent;border:1px solid rgba(255,255,255,.16);color:#FFFFFF;font-weight:700;padding:13px;border-radius:11px;transition:border-color .25s ease" style-hover="border-color:rgba(255,255,255,.4);color:#FFFFFF">Start Free</a>
+      <div style="height:1px;background:rgba(255,255,255,.08);margin:24px 0"></div>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px">
+        <li style="display:flex;gap:11px;font-size:14.5px;color:#DADAD5"><span style="color:#4ADE80;font-weight:800">✓</span>Unlimited MP3 uploads</li>
+        <li style="display:flex;gap:11px;font-size:14.5px;color:#DADAD5"><span style="color:#4ADE80;font-weight:800">✓</span>1 connected channel</li>
+        <li style="display:flex;gap:11px;font-size:14.5px;color:#DADAD5"><span style="color:#4ADE80;font-weight:800">✓</span>Beat store + storefront</li>
+        <li style="display:flex;gap:11px;font-size:14.5px;color:#DADAD5"><span style="color:#4ADE80;font-weight:800">✓</span>0% commission on sales</li>
+      </ul>
+    </div>
+    <div data-reveal data-delay="120" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);background:radial-gradient(130% 90% at 50% 0%,rgba(74,222,128,.16),rgba(74,222,128,.04) 55%,#000000 85%);border:1px solid var(--accent);border-radius:20px;padding:32px;position:relative;box-shadow:0 0 0 1px var(--accent),0 24px 70px rgba(74,222,128,.20)">
+      <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#4ADE80;color:#000000;font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 13px;border-radius:999px;white-space:nowrap">Most popular</div>
+      <div style="font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:#4ADE80">Pro</div>
+      <div style="margin:16px 0 4px;font-weight:900;letter-spacing:-.03em;font-size:52px;line-height:1">$17<span style="font-size:16px;font-weight:600;color:#8A8A85">/mo</span></div>
+      <p style="margin:6px 0 24px;font-size:14px;color:#8A8A85">For producers serious about growth.</p>
+      <a href="#top" style="display:block;text-align:center;background:#4ADE80;color:#000000;font-weight:700;padding:13px;border-radius:11px;transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 30px rgba(74,222,128,.32);color:#000000">Start Free Trial</a>
+      <div style="height:1px;background:rgba(255,255,255,.1);margin:24px 0"></div>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px">
+        <li style="display:flex;gap:11px;font-size:14.5px;color:#DADAD5"><span style="color:#4ADE80;font-weight:800">✓</span>MP3, WAV &amp; stems uploads</li>
+        <li style="display:flex;gap:11px;font-size:14.5px;color:#DADAD5"><span style="color:#4ADE80;font-weight:800">✓</span>2 connected channels</li>
+        <li style="display:flex;gap:11px;font-size:14.5px;color:#DADAD5"><span style="color:#4ADE80;font-weight:800">✓</span>Scheduled uploads</li>
+        <li style="display:flex;gap:11px;font-size:14.5px;color:#DADAD5"><span style="color:#4ADE80;font-weight:800">✓</span>Basic CRM + contracts</li>
+      </ul>
+    </div>
+    <div data-reveal data-delay="240" style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);background:transparent;border:1px solid rgba(255,255,255,.10);border-radius:20px;padding:32px">
+      <div style="font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:#8A8A85">Ultimate</div>
+      <div style="margin:16px 0 4px;font-weight:900;letter-spacing:-.03em;font-size:52px;line-height:1">$37<span style="font-size:16px;font-weight:600;color:#8A8A85">/mo</span></div>
+      <p style="margin:6px 0 24px;font-size:14px;color:#8A8A85">No ceiling on growth.</p>
+      <a href="#top" style="display:block;text-align:center;background:transparent;border:1px solid rgba(255,255,255,.16);color:#FFFFFF;font-weight:700;padding:13px;border-radius:11px;transition:border-color .25s ease" style-hover="border-color:rgba(255,255,255,.4);color:#FFFFFF">Start Free Trial</a>
+      <div style="height:1px;background:rgba(255,255,255,.08);margin:24px 0"></div>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px">
+        <li style="display:flex;gap:11px;font-size:14.5px;color:#DADAD5"><span style="color:#4ADE80;font-weight:800">✓</span>Everything in Pro</li>
+        <li style="display:flex;gap:11px;font-size:14.5px;color:#DADAD5"><span style="color:#4ADE80;font-weight:800">✓</span>Unlimited channels</li>
+        <li style="display:flex;gap:11px;font-size:14.5px;color:#DADAD5"><span style="color:#4ADE80;font-weight:800">✓</span>Advanced CRM + analytics</li>
+        <li style="display:flex;gap:11px;font-size:14.5px;color:#DADAD5"><span style="color:#4ADE80;font-weight:800">✓</span>Priority support</li>
+      </ul>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:32px;font-size:13px;color:#5A5A55">All plans include 0% commission · 7-day free trial on paid plans · Cancel anytime</p>
+</section>
+
+<section id="faq" style="max-width:820px;margin:0 auto;padding:clamp(50px,8vh,90px) 24px">
+  <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);text-align:center;margin-bottom:48px">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:22px"><span style="width:6px;height:6px;border-radius:50%;background:#4ADE80"></span><span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#4ADE80">FAQ</span></div>
+    <h2 style="margin:0;font-weight:900;text-transform:uppercase;letter-spacing:-.025em;line-height:.98;font-size:clamp(30px,5vw,60px)">Questions</h2>
+  </div>
+  <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;gap:12px">
+    <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="6">
+      <div style="{{ item.cardStyle }}">
+        <button onClick="{{ item.onToggle }}" style="width:100%;background:transparent;border:none;color:#FFFFFF;text-align:left;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;font-family:inherit">
+          <span style="font-weight:700;font-size:16.5px">{{ item.q }}</span>
+          <span style="{{ item.signStyle }}">+</span>
+        </button>
+        <div style="{{ item.bodyStyle }}"><p style="margin:0;padding:0 24px 22px;font-size:15px;line-height:1.6;color:#8A8A85">{{ item.a }}</p></div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="max-width:1040px;margin:0 auto;padding:clamp(40px,7vh,90px) clamp(24px,7vw,120px) clamp(70px,11vh,130px)">
+  <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);background:linear-gradient(180deg,#161616,#101010);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:clamp(48px,8vw,90px) 24px;text-align:center">
+    <h2 style="margin:0 auto;max-width:760px;font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.95;font-size:clamp(34px,6vw,76px);text-wrap:balance">Stop uploading like it's 2016.</h2>
+    <p style="max-width:520px;margin:24px auto 0;font-size:17px;line-height:1.55;color:#8A8A85">Upload once. Video, beat store listing, checkout link in the description. Done.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px">
+      <a href="#top" style="background:#4ADE80;color:#000000;font-weight:700;font-size:16px;padding:16px 30px;border-radius:11px;transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 14px 36px rgba(74,222,128,.3);color:#000000">Start Selling Free</a>
+      <a href="#pricing" style="background:transparent;color:#FFFFFF;font-weight:600;font-size:16px;padding:16px 28px;border-radius:11px;border:1px solid rgba(255,255,255,.16);transition:border-color .25s ease" style-hover="border-color:rgba(255,255,255,.4);color:#FFFFFF">See Plans</a>
+    </div>
+    <p style="margin-top:22px;font-size:13px;color:#5A5A55">Free forever · No credit card required · Cancel anytime</p>
+  </div>
+</section>
+
+<footer style="border-top:1px solid rgba(255,255,255,.08)">
+  <div style="max-width:1180px;margin:0 auto;padding:56px 24px 40px;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:32px">
+    <div>
+      <a href="#top" style="display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:18px;color:#FFFFFF"><span style="width:22px;height:22px;border-radius:6px;background:#4ADE80;display:inline-block"></span>MIDIMONEY</a>
+      <p style="margin:16px 0 0;max-width:300px;font-size:14px;line-height:1.55;color:#8A8A85">The platform for producers to upload, monetize, and grow their music careers.</p>
+    </div>
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5A5A55;margin-bottom:16px">Links</div>
+      <div style="display:flex;flex-direction:column;gap:11px;font-size:14px"><a href="#features" style="color:#8A8A85">Features</a><a href="#pricing" style="color:#8A8A85">Pricing</a><a href="#faq" style="color:#8A8A85">FAQ</a><a href="#top" style="color:#8A8A85">Sign up</a></div>
+    </div>
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5A5A55;margin-bottom:16px">Legal</div>
+      <div style="display:flex;flex-direction:column;gap:11px;font-size:14px"><a href="#top" style="color:#8A8A85">Terms of Service</a><a href="#top" style="color:#8A8A85">Privacy Policy</a><a href="#top" style="color:#8A8A85">Refund Policy</a></div>
+    </div>
+  </div>
+  <div style="max-width:1180px;margin:0 auto;padding:20px 24px 40px;border-top:1px solid rgba(255,255,255,.06);font-size:13px;color:#5A5A55">© 2026 MIDIMONEY — demo design system. All rights reserved.</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#4ADE80&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#4ADE80&quot;,&quot;#A3E635&quot;,&quot;#22D3EE&quot;,&quot;#FFFFFF&quot;],&quot;section&quot;:&quot;Theme&quot;},&quot;marqueeSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:34,&quot;min&quot;:15,&quot;max&quot;:60,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;reduceMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { openFaq: 0, wordIndex: 0 };
+
+
+  componentDidMount() {
+    this.tries = 0;
+    this.setup();
+    this.words = ['beats', 'packs', 'mixing', 'promo', 'anything'];
+    setTimeout(() => this.rotateWord(), 1400);
+  }
+
+  rotateWord() {
+    if (this.rotatingWordEl) {
+      const word = this.words[this.state.wordIndex];
+      this.rotatingWordEl.style.animation = 'none';
+      this.rotatingWordEl.textContent = word;
+      setTimeout(() => {
+        this.rotatingWordEl.style.animation = 'wordRotate 0.5s cubic-bezier(0.16,1,0.3,1) forwards';
+      }, 10);
+    }
+    this.wordTimer = setTimeout(() => {
+      this.setState(s => ({ wordIndex: (s.wordIndex + 1) % this.words.length }), () => this.rotateWord());
+    }, 3200);
+  }
+
+  componentWillUnmount() {
+    if (this.onScroll) window.removeEventListener('scroll', this.onScroll);
+    if (this.wordTimer) clearTimeout(this.wordTimer);
+  }
+
+  setup() {
+    const root = this.rootEl || document;
+    this.rotatingWordEl = root.querySelector('[data-rotating-word]');
+    const revealEls = root.querySelectorAll('[data-reveal]');
+    // Ref may not be attached yet on first mount tick — retry a few frames.
+    if (!revealEls.length && this.tries < 30) {
+      this.tries++;
+      requestAnimationFrame(() => this.setup());
+      return;
+    }
+    const reduce = !!this.props.reduceMotion;
+
+    if (this.rootEl) {
+      if (this.props.accent) this.rootEl.style.setProperty('--accent', this.props.accent);
+      if (this.props.marqueeSpeed) this.rootEl.style.setProperty('--mq-dur', this.props.marqueeSpeed + 's');
+    }
+    if (reduce && this.marqueeEl) this.marqueeEl.style.animation = 'none';
+
+    const inView = (el) => {
+      const r = el.getBoundingClientRect();
+      const h = window.innerHeight || document.documentElement.clientHeight;
+      return r.top < h * 0.94 && r.bottom > 0;
+    };
+    const reveal = (el) => {
+      const d = parseInt(el.getAttribute('data-delay') || '0', 10);
+      el.style.transitionDelay = d + 'ms';
+      el.style.setProperty('opacity', '1', 'important');
+      el.style.setProperty('transform', 'none', 'important');
+      el.classList.add('in');
+    };
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      revealEls.forEach(el => { el.style.setProperty('opacity', '1', 'important'); el.style.setProperty('transform', 'none', 'important'); });
+      root.querySelectorAll('[data-statcopy]').forEach(el => el.style.opacity = '1');
+      root.querySelectorAll('[data-count]').forEach(el => this.animateCount(el, true));
+      return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        reveal(e.target);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+    revealEls.forEach(el => io.observe(el));
+
+    // Safety net: immediately reveal anything already in view (covers cases
+    // where the observer's first callback is delayed or never fires on load).
+    requestAnimationFrame(() => {
+      revealEls.forEach(el => { if (inView(el) && !el.classList.contains('in')) { reveal(el); io.unobserve(el); } });
+    });
+    this.revealFallback = setTimeout(() => {
+      root.querySelectorAll('[data-reveal]:not(.in)').forEach(el => { if (inView(el)) { reveal(el); io.unobserve(el); } });
+    }, 1200);
+
+    // Choreography: stat numbers ride up as 0s with the hero, hold a beat,
+    // then race to their targets; each label fades in as its number slows in.
+    const COUNT_DUR = 1600;
+    // Fire the on-load choreography for any stat near the opening fold, not
+    // just strictly in view — short viewports still get the race without a scroll.
+    const nearFold = (el) => {
+      const h = window.innerHeight || document.documentElement.clientHeight;
+      return el.getBoundingClientRect().top < h * 1.35;
+    };
+    const counts = Array.from(root.querySelectorAll('[data-count]'));
+    counts.filter(nearFold).forEach((el, i) => {
+      const start = 1950 + i * 190;
+      this.animateCount(el, false, start, COUNT_DUR);
+      const copy = el.parentElement && el.parentElement.querySelector('[data-statcopy]');
+      if (copy) setTimeout(() => { copy.style.opacity = '1'; }, start + COUNT_DUR - 500);
+    });
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        this.animateCount(e.target, false, 140);
+        const copy = e.target.parentElement && e.target.parentElement.querySelector('[data-statcopy]');
+        if (copy) setTimeout(() => { copy.style.opacity = '1'; }, 900);
+        cio.unobserve(e.target);
+      });
+    }, { threshold: 0.5 });
+    counts.filter(el => !nearFold(el)).forEach(el => cio.observe(el));
+
+    this.onScroll = () => {
+      if (!this.headerEl) return;
+      const s = window.scrollY > 12;
+      this.headerEl.style.borderBottomColor = s ? 'rgba(255,255,255,0.10)' : 'rgba(255,255,255,0)';
+      this.headerEl.style.background = s ? 'rgba(0,0,0,0.72)' : 'rgba(0,0,0,0.35)';
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  componentWillUnmount() {
+    if (this.onScroll) window.removeEventListener('scroll', this.onScroll);
+  }
+
+  animateCount(el, instant, startDelay, duration) {
+    const target = parseFloat(el.getAttribute('data-count'));
+    const suffix = el.getAttribute('data-suffix') || '';
+    const prefix = el.getAttribute('data-prefix') || '';
+    const fmt = (n) => prefix + Math.round(n).toLocaleString('en-US') + suffix;
+    if (instant) { el.textContent = fmt(target); return; }
+    const dur = duration || 1500;
+    const ease = (t) => 1 - Math.pow(1 - t, 3);
+    const run = () => {
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / dur);
+        el.textContent = fmt(target * ease(t));
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    setTimeout(run, startDelay != null ? startDelay : 820);
+  }
+
+  toggleFaq(i) {
+    this.setState(s => ({ openFaq: s.openFaq === i ? -1 : i }));
+  }
+
+  renderVals() {
+    const quoteData = [
+      { text: '“I never thought I\u2019d be this satisfied with a platform. It saves me so much time I can just make music.”', name: 'SickoBeats', role: 'Producer', initial: 'S', delay: 0 },
+      { text: '“Exactly what I\u2019ve been looking for. Auto-detection for BPM, key, and the AI features are unreal.”', name: 'Syre', role: 'Producer', initial: 'Y', delay: 120 },
+      { text: '“Visually intuitive and incredibly efficient. Connecting multiple channels streamlined my whole workflow.”', name: 'Drobbeat', role: 'Producer', initial: 'D', delay: 240 }
+    ];
+    const faqData = [
+      { q: 'Do you take commission on my sales?', a: 'No. We charge 0% commission \u2014 you keep every dollar. The only fee is your processor\u2019s standard rate (2.9% + $0.30), which applies on any platform. We make money from optional subscriptions, not your revenue.' },
+      { q: 'Do I need a connected channel?', a: 'A channel unlocks auto-publishing, but you can run a standalone beat store without one. You can connect or disconnect channels anytime from your dashboard.' },
+      { q: 'Can I schedule uploads?', a: 'Yes \u2014 on Pro and Ultimate you can queue and schedule uploads in advance so your catalog goes live on a steady cadence without manual work.' },
+      { q: 'What payment methods do you support?', a: 'Apple Pay, Google Pay, PayPal, and every major card, plus regional methods like iDEAL, SEPA, and more \u2014 whatever converts best for your buyer.' },
+      { q: 'Can I cancel anytime?', a: 'Absolutely. Plans are month-to-month with no lock-in. Cancel from your billing page and you keep access through the end of your current period.' },
+      { q: 'Is switching from another platform worth it?', a: 'Most producers migrate their catalog in an afternoon and start converting better the same week thanks to faster checkout and 0% commission.' }
+    ];
+    return {
+      setRoot: this.setRoot,
+      setHeader: this.setHeader,
+      setMarquee: this.setMarquee,
+      // Repeat each set so a single half is wider than any viewport — the
+      // track (two identical halves) then loops with no gap and no visible reset.
+      row1: Array(4).fill(['simple-icons:youtube','simple-icons:spotify','simple-icons:soundcloud','simple-icons:applemusic','simple-icons:bandcamp','simple-icons:audiomack']).flat(),
+      row2: Array(4).fill(['simple-icons:instagram','simple-icons:tiktok','simple-icons:x','simple-icons:discord','simple-icons:paypal','simple-icons:stripe']).flat(),
+      quotes: quoteData,
+      faqs: faqData.map((f, i) => {
+        const open = this.state.openFaq === i;
+        return {
+          q: f.q, a: f.a,
+          onToggle: () => this.toggleFaq(i),
+          cardStyle: {
+            background: '#000000',
+            border: open ? '1px solid rgba(74,222,128,.35)' : '1px solid rgba(255,255,255,.10)',
+            borderRadius: '14px',
+            overflow: 'hidden',
+            transition: 'border-color .3s ease'
+          },
+          signStyle: {
+            fontWeight: 400,
+            fontSize: '30px',
+            lineHeight: 1,
+            flex: 'none',
+            color: open ? 'var(--accent)' : '#FFFFFF',
+            transform: open ? 'rotate(135deg)' : 'rotate(0deg)',
+            transition: 'transform .35s cubic-bezier(.16,1,.3,1), color .3s ease'
+          },
+          bodyStyle: {
+            maxHeight: open ? '260px' : '0px',
+            opacity: open ? 1 : 0,
+            overflow: 'hidden',
+            transition: 'max-height .45s cubic-bezier(.16,1,.3,1), opacity .35s ease'
+          }
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>
