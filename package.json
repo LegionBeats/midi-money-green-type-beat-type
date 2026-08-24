@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "preview": "node preview/build.mjs && node preview/assemble.mjs"
   },
   "dependencies": {
     "next": "^16.3.2",

@@ -27,7 +27,21 @@ npm run dev        # http://localhost:3000
 npm run build
 npm run lint
 npm run typecheck
+npm run preview    # single-file shareable build, see below
 ```
+
+## Shareable preview
+
+`npm run preview` (after a `npm run build`, which produces the font subsets it
+inlines) bundles the page into one self-contained
+`preview/midimoney-preview.html` — CSS, JS, and the same self-hosted Archivo and
+Instrument Serif woff2 subsets, all inlined. It makes no network requests at
+all, so it can be opened straight from disk or handed to anyone who needs to
+look at the design without running the app.
+
+It renders the same components, CSS, and motion hooks as the app. Two things
+differ, both confined to the shell: it is a client-only React render rather than
+SSR + hydration, and the fonts are inlined rather than served by `next/font`.
 
 ## Layout
 

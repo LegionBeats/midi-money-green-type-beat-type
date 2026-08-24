@@ -1,0 +1,14 @@
+/* next/font supplies these in the real app; the preview loads the same two
+   families from Google Fonts instead. */
+:root {
+  --font-archivo: 'Archivo';
+  --font-instrument-serif: 'Instrument Serif';
+}
+
+/* The artifact host paints its own ground behind the page, so the black is
+   stated explicitly here as well as in globals.css. */
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+}

@@ -7,3 +7,7 @@ build/
 next-env.d.ts
 .env*.local
 .vercel
+
+# Generated single-file preview (npm run preview)
+preview/out/
+preview/*.html

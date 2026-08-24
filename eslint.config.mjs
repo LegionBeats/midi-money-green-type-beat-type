@@ -12,6 +12,8 @@ const config = [
       'lib/fluid/engine.js',
       // The handoff package, kept for reference.
       'design_handoff_midimoney/**',
+      // Generated preview bundle — see `npm run preview`.
+      'preview/out/**',
     ],
   },
 ];
