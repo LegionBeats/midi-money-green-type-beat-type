@@ -1,4 +1,5 @@
 import { CONVERSION_METRICS } from '@/data/content';
+import { CardGrid } from './CardGrid';
 import { Reveal } from './Reveal';
 import { SectionEyebrow } from './SectionEyebrow';
 import styles from './ConversionStats.module.css';
@@ -16,7 +17,7 @@ export function ConversionStats() {
         </p>
       </Reveal>
 
-      <div className={styles.grid}>
+      <CardGrid className={styles.grid}>
         {CONVERSION_METRICS.map((item) => (
           <Reveal key={item.metric} delay={item.delay} className={styles.cell}>
             <div
@@ -29,7 +30,7 @@ export function ConversionStats() {
             <p className={styles.caption}>{item.caption}</p>
           </Reveal>
         ))}
-      </div>
+      </CardGrid>
     </section>
   );
 }

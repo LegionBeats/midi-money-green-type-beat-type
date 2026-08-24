@@ -60,8 +60,13 @@ scripts/           regenerators for the two generated files
 ```
 
 Sections map 1:1 onto the handoff's numbered component files. Shared pieces:
-`SectionEyebrow` (used by six sections, as the handoff asks), `Reveal`, `Cta`,
-`Logo`.
+`SectionEyebrow` (used by six sections, as the handoff asks), `CardGrid`,
+`Reveal`, `Cta`, `Logo`.
+
+**Adding a section?** Use `CardGrid` for any multi-column block. It owns the
+column count, the gaps, and the stack-to-one-column behaviour, so a new section
+is responsive the moment you write it — there is no per-section breakpoint to
+remember. Type sizes come from the `--t-*` tokens for the same reason.
 
 `LandingRoot` owns the three props the design exposes — `accent`,
 `marqueeSpeed`, `reduceMotion` — and publishes them as `--accent`, `--mq-dur`,
@@ -133,12 +138,22 @@ fails loudly instead of silently producing a broken engine.
 ## Open questions for the designer
 
 1. **Mobile layout — needs signoff.** The handoff states the prototype was
-   designed and reviewed at desktop widths only. Implemented per the README's
-   own recommendation: the four three-column grids stack to one column below
-   760px, the platform marquee keeps its 72px cards, the header nav is hidden,
-   and the rotating word's 280px floor is released so the "?" sits tight. This
-   is the least-invented option available, but it is still not a specified
-   design.
+   designed and reviewed at desktop widths only, so everything below is an
+   invention, not a specified design. Desktop is untouched by all of it —
+   verified at 1280px and 1440px.
+   - Multi-column blocks stack to one column below 760px, via `CardGrid`.
+   - The header nav becomes a disclosure panel rather than disappearing.
+   - Tap targets are lifted to a 44px floor (logo, header CTA, tier CTAs,
+     footer links); the spec's desktop padding is unchanged.
+   - The step numeral's clamp floor drops 96px → 72px. Only the floor moves, so
+     every width at or above 800px renders exactly as before.
+   - The step title and metric caption overlaps are now a ratio of the numeral
+     they overlap rather than a fixed pixel value, so they hold together as the
+     numeral shrinks. Both still resolve to the spec's exact -32px and -8px once
+     the type scale caps.
+   - The platform marquee's edge fade widens below 760px; the desktop geometry
+     left roughly three icons legible on a phone.
+   - The rotating word's 280px floor is released so the "?" sits tight.
 2. **Syre's avatar initial is "Y", not "S".** Preserved verbatim from the
    handoff, which flags it as intentional. Confirm.
 3. **Platform icon hover** now brightens the icon to `#FFFFFF` alongside the

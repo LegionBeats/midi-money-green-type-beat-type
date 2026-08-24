@@ -1,4 +1,5 @@
 import { TESTIMONIALS } from '@/data/content';
+import { CardGrid } from './CardGrid';
 import { Reveal } from './Reveal';
 import { SectionEyebrow } from './SectionEyebrow';
 import styles from './Testimonials.module.css';
@@ -12,7 +13,7 @@ export function Testimonials() {
         <h2 className={styles.heading}>Producers talk</h2>
       </Reveal>
 
-      <div className={styles.grid}>
+      <CardGrid>
         {TESTIMONIALS.map((item) => (
           <Reveal key={item.name} delay={item.delay} className={styles.card} as="figure">
             <p className={styles.quote}>{item.text}</p>
@@ -27,7 +28,7 @@ export function Testimonials() {
             </figcaption>
           </Reveal>
         ))}
-      </div>
+      </CardGrid>
     </section>
   );
 }

@@ -73,7 +73,7 @@
   --t-cta-h2: clamp(34px, 6vw, 76px);
   --t-stat: clamp(42px, 5.6vw, 80px);
   --t-metric: clamp(56px, 7vw, 92px);
-  --t-step: clamp(96px, 12vw, 150px);
+  --t-step: clamp(72px, 12vw, 150px);
   --t-wordmark: clamp(46px, 7vw, 96px);
   --t-wordmark-star: clamp(30px, 4vw, 52px);
 

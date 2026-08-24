@@ -47,13 +47,99 @@
   font-weight: 600;
 }
 
+/* --- Mobile menu --------------------------------------------------------- */
+
+/* Hidden at desktop; the rail carries the nav directly there. */
+.menuButton {
+  display: none;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menuBar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--fg);
+  border-radius: 2px;
+  transition:
+    transform 0.3s var(--ease),
+    opacity 0.2s ease;
+}
+
+/* Three bars fold into an X. */
+.menuOpen .menuBar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menuOpen .menuBar:nth-child(2) {
+  opacity: 0;
+}
+
+.menuOpen .menuBar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.panel {
+  display: none;
+  overflow: hidden;
+  max-height: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0);
+  transition:
+    max-height 0.4s var(--ease),
+    border-color 0.3s ease;
+}
+
+.panelOpen {
+  max-height: 320px;
+  border-top-color: var(--line-08);
+}
+
+.panelInner {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 24px 20px;
+}
+
+/* Generous rows rather than 15px text targets. */
+.panelLink {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--line-06);
+}
+
+.panelLink:last-of-type {
+  border-bottom: none;
+}
+
 @media (max-width: 760px) {
-  /* Unspecified by the handoff — see README.md "Mobile layout". */
-  .nav {
+  /* Mobile is unspecified by the handoff — see README.md "Mobile layout". */
+  .rail {
+    padding: 0 16px;
+  }
+
+  .nav,
+  .login {
     display: none;
   }
 
-  .rail {
-    padding: 0 16px;
+  .menuButton {
+    display: flex;
+  }
+
+  .panel {
+    display: block;
   }
 }

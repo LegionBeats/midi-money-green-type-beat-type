@@ -27,11 +27,8 @@
   color: var(--text-muted);
 }
 
-/* Bare numbers — no card background or border. */
+/* Bare numbers — no card background or border. CardGrid owns the columns. */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
   margin-top: 56px;
 }
 
@@ -52,20 +49,13 @@
   color: var(--accent);
 }
 
-/* The negative top margin is deliberate overlap into the numeral's leading. */
+/* Deliberate overlap into the numeral's leading — proportional to the metric
+   (-8px at its full 92px) so it scales with the number. */
 .caption {
   position: relative;
-  margin: -8px 0 0;
+  margin: calc(var(--t-metric) / 92 * -8) 0 0;
   max-width: 240px;
   font-size: 15px;
   line-height: 1.5;
   color: var(--text-muted);
-}
-
-@media (max-width: 760px) {
-  /* Unspecified by the handoff — see README.md "Mobile layout". */
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
 }

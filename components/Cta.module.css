@@ -112,3 +112,20 @@
   color: var(--fg);
   border-color: var(--line-40);
 }
+
+@media (max-width: 760px) {
+  /* Mobile is unspecified by the handoff — see README.md "Mobile layout".
+     The spec's padding leaves these at 33px and 43px; touch wants 44. */
+  .header {
+    /* Pinned rather than derived from padding, so font metrics can't leave it
+       a pixel short of the 44px floor. */
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 18px;
+  }
+
+  .tier {
+    padding: 14px;
+  }
+}
