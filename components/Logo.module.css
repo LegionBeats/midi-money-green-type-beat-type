@@ -1,0 +1,19 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+  color: var(--fg);
+}
+
+/* Plain green rounded square — there is no logo asset in this design. */
+.mark {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--r-mark);
+  background: var(--accent);
+  display: inline-block;
+  flex: none;
+}

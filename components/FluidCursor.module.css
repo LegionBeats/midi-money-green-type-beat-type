@@ -1,0 +1,16 @@
+/*
+ * Sits behind its container's content. The container is responsible for
+ * `position: relative`, `overflow: hidden`, and lifting its own content to
+ * z-index 1 — nothing here assumes it is the hero, so the effect can be moved
+ * to another section by changing only its parent.
+ */
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+}

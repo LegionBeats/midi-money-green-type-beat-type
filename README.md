@@ -1,75 +1,137 @@
-# Handoff: MIDIMONEY Landing Page
+# MIDIMONEY landing page
 
-## Overview
-A single-page marketing site for MIDIMONEY — a beat-selling platform / education product for music producers. Dark, high-contrast, motion-forward. The page's job is to establish credibility (10+ year track record, tracked sales numbers, two named founders) and drive to a free signup.
+A single-page marketing site for MIDIMONEY, built from the design handoff in
+[`design_handoff_midimoney/`](./design_handoff_midimoney/).
 
-The design is modeled on the motion choreography of typebeat.fun: content rises into place on load, stat numbers race up from zero after a deliberate pause, and a word in the headline rotates through five options.
+The handoff package is kept in the repo as the source of truth. Read
+`design-tokens.md` and `motion-spec.md` there before changing anything visual —
+the design is high-fidelity and the numbers in those files are the spec, not
+suggestions.
 
-## About the design files
-The files in `design-reference/` are **design references created in HTML** — a prototype showing intended look and behavior. They are **not production code to copy directly.** They run on a proprietary component runtime (`support.js`, `<x-dc>`, `<sc-for>`, `renderVals()`) that does not exist outside the authoring environment, and every style is a literal inline style with no token layer.
+## Stack
 
-Your task is to **recreate these designs in this codebase's existing environment** — React/Next, Vue, Svelte, whatever is established — using its existing component patterns, styling solution, and conventions. If the project has no frontend yet, choose the most appropriate framework and implement there.
+| | |
+|---|---|
+| Framework | Next.js 16 (App Router), React 19, TypeScript |
+| Styling | CSS Modules over a custom-property token layer in `app/globals.css` |
+| Fonts | Archivo + Instrument Serif, self-hosted via `next/font/google` |
+| Icons | `simple-icons`, inlined at build time — no CDN, no runtime icon request |
 
-Read the HTML for exact values. Read this documentation for intent, structure, and behavior.
+CSS Modules rather than a utility framework: nearly every value in the design is
+a literal `clamp()`, `rgba()` hairline, or one of three gradients, which maps
+directly onto custom properties and reads the same as the spec it came from.
 
-## Fidelity
-**High-fidelity.** Colors, typography, spacing, and motion timings are final and deliberate. Recreate them precisely. Where this documentation gives a number, that number is the spec.
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build
+npm run lint
+npm run typecheck
+```
 
-Two things are intentionally locked and should not be "improved":
-- **Palette.** True black, true white, one green accent, one muted gray. No second accent, no gradients beyond the two documented radial glows.
-- **Type.** Archivo everywhere; Instrument Serif on exactly one line ("We'll show you how.").
+## Layout
 
-## Component map
-Each file in `components/` specifies one section, in page order. They are written to map 1:1 onto components in your codebase.
+```
+app/
+  globals.css      token layer, keyframes, reduced-motion short-circuit
+  layout.tsx       fonts, metadata, no-JS reveal fallback
+  page.tsx         the twelve sections, in order
+components/        one component per section, plus shared primitives
+hooks/             useReveal-adjacent motion hooks
+lib/
+  motion.tsx       reduced-motion context
+  fluid/engine.js  vendored WebGL fluid simulation (generated)
+data/              all page copy and the inlined platform icons
+scripts/           regenerators for the two generated files
+```
 
-| # | Component | File | Screenshot |
-|---|---|---|---|
-| 1 | Sticky header / nav | `components/01-Header.md` | 01 |
-| 2 | Hero (headline, rotating word, credential line) | `components/02-Hero.md` | 01 |
-| 3 | Stats band + primary CTAs | `components/03-StatsBand.md` | 01 |
-| 4 | Conversion stats section | `components/04-ConversionStats.md` | 02 |
-| 5 | Wordmark marquee | `components/05-WordmarkMarquee.md` | 03 |
-| 6 | Three steps | `components/06-ThreeSteps.md` | 03–04 |
-| 7 | Platform icon marquee (dual row) | `components/07-PlatformMarquee.md` | 04–05 |
-| 8 | Testimonials | `components/08-Testimonials.md` | 05–06 |
-| 9 | Pricing (3 tiers) | `components/09-Pricing.md` | 06–07 |
-| 10 | FAQ accordion | `components/10-FAQ.md` | 07 |
-| 11 | Final CTA panel | `components/11-FinalCTA.md` | 08 |
-| 12 | Footer | `components/12-Footer.md` | 08 |
+Sections map 1:1 onto the handoff's numbered component files. Shared pieces:
+`SectionEyebrow` (used by six sections, as the handoff asks), `Reveal`, `Cta`,
+`Logo`.
 
-Cross-cutting specs, read these first:
-- `design-tokens.md` — every color, type, spacing, radius, and shadow value in the design.
-- `motion-spec.md` — the full reveal choreography, timings, easings, and reduced-motion behavior. **The motion is a primary feature of this design, not decoration.** Budget real time for it.
-- `CLAUDE_CODE_PROMPT.md` — a paste-ready prompt for starting the implementation.
+`LandingRoot` owns the three props the design exposes — `accent`,
+`marqueeSpeed`, `reduceMotion` — and publishes them as `--accent`, `--mq-dur`,
+and a motion context.
 
-## Page structure
-Single scrolling page. All navigation is in-page anchor scrolling (`scroll-behavior: smooth`), no routes.
+## Motion
 
-Anchor ids in use: `#top` (hero), `#features`, `#how`, `#platforms`, `#pricing`, `#faq`.
+Motion is the primary feature of this design. `motion-spec.md` is implemented
+in full; the pieces worth knowing:
 
-## State
-The page holds almost no state. What exists:
+- **One reveal mechanism.** `Reveal` starts at `opacity: 0; translateY(30px)`
+  and transitions over `.9s` on `cubic-bezier(.16, 1, .3, 1)`, fired by an
+  IntersectionObserver at `threshold: 0.14`. Stagger is a `transition-delay`,
+  not a second animation. It fires once and never re-hides.
+- **The hero load choreography falls out of that same mechanism.** Those
+  elements are already in view, so the observer's first callback lands on
+  mount and the per-element delays (0/80/120/180/260/340/460/580/700ms)
+  sequence the rise. The buttons at 260ms appear *before* the stats at 460ms
+  even though they sit below them — that is intentional.
+- **The pause is deliberate.** The last element rises at 700ms; the first stat
+  number does not move until 1950ms. The page settles, holds, then the numbers
+  race. Do not close that gap.
+- **Counts** run 1600ms on a cubic ease-out, driven by `requestAnimationFrame`.
+  Each label fades in at count start + 1100ms — while the number is still
+  visibly decelerating, not after it stops. Stats more than 1.35 viewports down
+  fall back to a `threshold: 0.5` observer instead.
+- **The rotating word** starts at 1400ms and holds each word 3200ms. Its
+  container has a `min-width: 280px` floor, which is load-bearing: without it
+  "anything" and "promo" re-break the headline. The gap between the word and
+  the "?" is a side effect of that and is intended.
+- **Reduced motion** short-circuits everything, wired to both the
+  `reduceMotion` prop and `prefers-reduced-motion: reduce`. If nothing on the
+  page moves, check `data-reduce-motion` on the page root first.
 
-| State | Type | Initial | Owner | Notes |
-|---|---|---|---|---|
-| `openFaq` | number | `0` | FAQ | Index of the open item; `-1` = all closed. Single-open accordion — opening one closes the other. First item open on load. |
-| `wordIndex` | number | `0` | Hero | Index into the rotating word list. Advances every 3200ms, wraps. |
-| `scrolled` | boolean | `false` | Header | `window.scrollY > 12`. Drives header background + border. |
-| reveal flags | per-element | not revealed | all sections | One-shot; once revealed, never re-hidden. IntersectionObserver, unobserve on fire. |
+## Fluid cursor
 
-No data fetching. No forms. No loading or error states. All copy and data is static and lives in the component files.
+`components/FluidCursor.tsx` is a cursor-reactive smoke trail on a transparent
+WebGL canvas, layered behind the hero. It is self-contained: the canvas is
+`position: absolute; inset: 0; z-index: 0; pointer-events: none`, and it takes
+its pointer target from its own parent — so moving the effect to another
+section means changing only which container it sits in. That container needs
+`position: relative`, `overflow: hidden`, and its content at `z-index: 1`.
 
-## Responsive
-The prototype is fluid rather than breakpoint-driven: every type size and section padding is a `clamp()`, so it degrades continuously from ~1280px down. **It was designed and reviewed at desktop widths only.** Three three-column grids (conversion stats, three steps, testimonials, pricing) will need real mobile treatment that the prototype does not specify — recommend stacking to one column below ~760px, and the platform marquee rows keeping their 72px cards. Confirm mobile behavior with the designer rather than inferring it.
+Config and splat color come from `fluid-hero.js` at the repo root, unchanged.
+Every splat uses `heroSplatColor()` rather than a random hue. Under reduced
+motion the simulation never starts and the engine chunk is never fetched.
 
-## Assets
-No image or font files to transfer.
-- **Fonts:** Archivo (400,500,600,700,800,900) and Instrument Serif (400, roman + italic), both from Google Fonts. Self-host or use your existing font pipeline; preserve the weights — 900 is load-bearing.
-- **Icons:** platform logos come from Iconify's `simple-icons` set, loaded via the `iconify-icon` web component CDN. In production, install `@iconify-json/simple-icons` (or your icon library's equivalent) and render locally instead of hitting the CDN. Exact icon names are listed in `components/07-PlatformMarquee.md`. Note this is the one runtime network dependency in the design — a bundled or offline copy of the page still fetches these icons.
-- The MIDIMONEY logo mark is a plain 22×22px green rounded square, not an asset.
+The simulation itself is **Pavel Dobryakov's
+[WebGL-Fluid-Simulation](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation)
+(MIT)**, vendored into `lib/fluid/engine.js`.
 
-## Prototype quirks not to replicate
-- Reveals are driven by direct `style.setProperty(..., 'important')` mutation with retry loops and a 1200ms timeout fallback. That plumbing exists to work around the authoring runtime's streaming render. In a real framework, use CSS classes or a proper animation library.
-- The rotating word element is found with `document.querySelector('[data-rotating-word]')` because a template ref did not work in the runtime. Use a normal ref.
-- `componentWillUnmount` is defined twice in the logic class (the second shadows the first, dropping the word-timer cleanup). Clean up **both** the scroll listener and the rotation timer in your implementation.
-- `support.js` is included only so the reference file opens in a browser. It is not part of the design.
+## Generated files
+
+Both are committed, and both have a regenerator so the edits stay reviewable
+rather than living as hand-patches:
+
+```bash
+node scripts/generate-icons.mjs                        # data/platformIcons.ts
+node scripts/vendor-fluid-engine.mjs <upstream/script.js>   # lib/fluid/engine.js
+```
+
+`vendor-fluid-engine.mjs` reshapes the upstream page script into one importable
+factory: explicit canvas and pointer target, no dat.GUI or screenshot export,
+no transparency checkerboard, no dithering-texture fetch, no opening splat
+burst, a caller-supplied splat color, and a `destroy()` that stops the loop and
+releases the GL context. Each edit asserts that it matched, so upstream drift
+fails loudly instead of silently producing a broken engine.
+
+## Open questions for the designer
+
+1. **Mobile layout — needs signoff.** The handoff states the prototype was
+   designed and reviewed at desktop widths only. Implemented per the README's
+   own recommendation: the four three-column grids stack to one column below
+   760px, the platform marquee keeps its 72px cards, the header nav is hidden,
+   and the rotating word's 280px floor is released so the "?" sits tight. This
+   is the least-invented option available, but it is still not a specified
+   design.
+2. **Syre's avatar initial is "Y", not "S".** Preserved verbatim from the
+   handoff, which flags it as intentional. Confirm.
+3. **Platform icon hover** now brightens the icon to `#FFFFFF` alongside the
+   green border, resolving the prototype's declared-but-unused color
+   transition.
+4. **FAQ panel height** is measured from real content rather than the
+   prototype's hard `260px`, as both the FAQ spec and `motion-spec.md` ask, so
+   long answers cannot clip.
+5. **Placeholder copy still to replace:** the footer legal links all point at
+   `#top`, and the copyright line still reads "demo design system".

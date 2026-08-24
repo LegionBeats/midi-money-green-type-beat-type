@@ -1,0 +1,122 @@
+.section {
+  padding: var(--pad-section-y) 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  background: var(--grad-platform-glow);
+  pointer-events: none;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 52px;
+  padding: 0 24px;
+}
+
+/* Tighter than other H2s because it is deliberately two lines. */
+.heading {
+  margin: 0;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 0.9;
+  font-size: var(--t-h2);
+}
+
+.rows {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 2%,
+    rgba(0, 0, 0, 0.55) 30%,
+    #000 47%,
+    #000 53%,
+    rgba(0, 0, 0, 0.55) 70%,
+    transparent 98%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 2%,
+    rgba(0, 0, 0, 0.55) 30%,
+    #000 47%,
+    #000 53%,
+    rgba(0, 0, 0, 0.55) 70%,
+    transparent 98%
+  );
+}
+
+.row {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Opposing directions are the point of the dual-row treatment. */
+.rowLeft {
+  animation: scrollL 28s linear infinite;
+}
+
+.rowRight {
+  animation: scrollR 28s linear infinite;
+}
+
+.half {
+  display: flex;
+  gap: 40px;
+  padding-right: 40px;
+  flex-shrink: 0;
+}
+
+.card {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--r-icon-card);
+  background: var(--surface);
+  border: 1px solid var(--line-08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-idle);
+  flex: none;
+  transition:
+    border-color 0.4s ease,
+    color 0.4s ease;
+}
+
+.card:hover {
+  border-color: var(--line-accent-50);
+  color: var(--fg);
+}
+
+.icon {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+
+.footer {
+  position: relative;
+  text-align: center;
+  margin-top: 56px;
+  padding: 0 24px;
+}
+
+.blurb {
+  margin: 0 auto;
+  max-width: 440px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.ctaWrap {
+  margin-top: 30px;
+}

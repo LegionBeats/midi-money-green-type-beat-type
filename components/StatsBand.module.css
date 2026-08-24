@@ -1,0 +1,81 @@
+.band {
+  /* Full bleed, and deliberately tight up top: the three stats must clear the
+     fold at 1280x800 and 1440x900. */
+  padding: clamp(2px, 0.8vh, 8px) clamp(24px, 5vw, 72px) clamp(40px, 6vh, 72px);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 44px;
+  border-top: 1px solid var(--line-08);
+  border-bottom: 1px solid var(--line-08);
+  padding: clamp(24px, 4vh, 44px) 0;
+  margin-bottom: clamp(28px, 4.2vh, 50px);
+}
+
+/* Left-aligned cells inside a centered page. */
+.cell {
+  text-align: left;
+  position: relative;
+}
+
+.number {
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  font-size: var(--t-stat);
+  color: var(--fg);
+  /* Digits change width as the number races; tabular figures stop the cell
+     from twitching on every frame. */
+  font-variant-numeric: tabular-nums;
+}
+
+/* Fades in as its number is still decelerating, not after it stops. */
+.copy {
+  opacity: 0;
+  transition: opacity 0.7s var(--ease);
+  margin-top: 12px;
+}
+
+.copyShown {
+  opacity: 1;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.description {
+  margin: 9px 0 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.finePrint {
+  margin: clamp(16px, 2.4vh, 28px) 0 0;
+  font-size: 13px;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  /* Unspecified by the handoff — see README.md "Mobile layout". */
+  .row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

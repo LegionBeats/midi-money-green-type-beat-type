@@ -1,0 +1,82 @@
+.section {
+  padding: var(--pad-section-y) clamp(24px, 5vw, 64px);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.heading {
+  margin: 0;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  font-size: var(--t-h2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* No hover state on these cards. */
+.card {
+  /* Rendered as a <figure>; reset the UA margin so the grid controls spacing. */
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--line-08);
+  border-radius: var(--r-testimonial);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.quote {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text-body);
+}
+
+/* margin-top: auto pins attribution to the card bottom whatever the quote
+   length. */
+.attribution {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: var(--accent);
+  flex: none;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.role {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 760px) {
+  /* Unspecified by the handoff — see README.md "Mobile layout". */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

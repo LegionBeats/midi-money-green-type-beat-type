@@ -1,0 +1,145 @@
+.section {
+  max-width: var(--w-section);
+  margin: 0 auto;
+  /* Slightly tighter side padding than other sections. */
+  padding: var(--pad-section-y) clamp(24px, 7vw, 110px);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.heading {
+  margin: 0;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  font-size: var(--t-h2);
+}
+
+.sub {
+  max-width: 480px;
+  margin: 20px auto 0;
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.card {
+  background: transparent;
+  border: 1px solid var(--line-10);
+  border-radius: var(--r-pricing);
+  padding: 32px;
+}
+
+/* The Pro card is not scaled up or offset — it wins on glow alone. */
+.cardHighlighted {
+  background: var(--grad-pro);
+  border: 1px solid var(--accent);
+  box-shadow: var(--shadow-pro-card);
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 13px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+
+.tierName {
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.tierNameAccent {
+  color: var(--accent);
+}
+
+.price {
+  margin: 16px 0 4px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-size: 52px;
+  line-height: 1;
+}
+
+.period {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.tagline {
+  margin: 6px 0 24px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.divider {
+  height: 1px;
+  background: var(--line-08);
+  margin: 24px 0;
+}
+
+.dividerHighlighted {
+  background: var(--line-10);
+}
+
+.features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.feature {
+  display: flex;
+  gap: 11px;
+  font-size: 14.5px;
+  color: var(--text-body);
+}
+
+.check {
+  color: var(--accent);
+  font-weight: 800;
+  flex: none;
+}
+
+.footnote {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+@media (max-width: 760px) {
+  /* Unspecified by the handoff — see README.md "Mobile layout". */
+  .grid {
+    grid-template-columns: 1fr;
+    /* Extra room so the Pro badge never overlaps the card above it. */
+    gap: 28px;
+  }
+}

@@ -1,0 +1,104 @@
+/*
+ * Full-bleed band so the fluid canvas can span the viewport; the 1000px
+ * max-width and every padding value from the spec live on .content, which
+ * keeps the text measure identical to the design.
+ */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  /* Above the canvas, which sits at z-index 0. */
+  z-index: 1;
+  max-width: var(--w-hero);
+  margin: 0 auto;
+  /* Tight at the bottom: the stats band follows immediately and must stay
+     above the fold. */
+  padding: clamp(28px, 3.2vh, 48px) clamp(24px, 7vw, 120px) clamp(8px, 1.5vh, 16px);
+  text-align: center;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 15px;
+  border: 1px solid var(--line-12);
+  border-radius: var(--r-pill);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-badge);
+  margin-bottom: 26px;
+}
+
+/* The one pulsing dot in the design. */
+.pillDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+  animation: gpulse 4.6s ease-in-out infinite;
+}
+
+.headline {
+  margin: 0;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-size: var(--t-hero-h1);
+  text-wrap: balance;
+}
+
+/*
+ * The 280px floor is load-bearing: it stops "anything" and "promo" from
+ * re-breaking the headline as the word cycles. The "?" therefore sits at a
+ * fixed distance from the word rather than tight against it — that gap is
+ * intended. Do not let this shrink-wrap.
+ */
+.rotatingWord {
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 280px;
+  min-height: 1em;
+}
+
+.word {
+  animation: wordRotate 0.5s var(--ease) both;
+}
+
+/* The only Instrument Serif in the design. */
+.serif {
+  margin: clamp(20px, 2.8vh, 40px) 0 0;
+  font-family: var(--font-instrument-serif), serif;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.2;
+  font-size: var(--t-hero-serif);
+  text-wrap: balance;
+  color: var(--fg);
+}
+
+.credential {
+  margin: clamp(16px, 2.2vh, 32px) 0 0;
+  font-size: var(--t-credential);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+@media (max-width: 760px) {
+  /* Unspecified by the handoff — see README.md "Mobile layout". */
+  .rotatingWord {
+    min-width: 0;
+  }
+}

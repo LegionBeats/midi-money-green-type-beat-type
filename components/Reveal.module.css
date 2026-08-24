@@ -1,0 +1,17 @@
+/*
+ * The one reveal primitive: opacity 0 + translateY(30px) -> final, .9s on the
+ * shared easing. Per-element stagger is a transition-delay, not a separate
+ * animation (motion-spec.md #1).
+ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity var(--reveal-dur) var(--ease),
+    transform var(--reveal-dur) var(--ease);
+}
+
+.revealed {
+  opacity: 1;
+  transform: none;
+}

@@ -1,0 +1,47 @@
+.section {
+  max-width: var(--w-section);
+  margin: 0 auto;
+  padding: clamp(40px, 7vh, 90px) clamp(24px, 7vw, 120px) clamp(70px, 11vh, 130px);
+}
+
+/* The only linear gradient card in the design, and the largest radius. */
+.panel {
+  background: var(--grad-final-cta);
+  border: 1px solid var(--line-08);
+  border-radius: var(--r-panel);
+  padding: clamp(48px, 8vw, 90px) 24px;
+  text-align: center;
+}
+
+.heading {
+  margin: 0 auto;
+  max-width: 760px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  font-size: var(--t-cta-h2);
+  text-wrap: balance;
+}
+
+.sub {
+  max-width: 520px;
+  margin: 24px auto 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+
+.finePrint {
+  margin: 22px 0 0;
+  font-size: 13px;
+  color: var(--text-faint);
+}

@@ -1,0 +1,94 @@
+.section {
+  /* Narrower than every other section. */
+  max-width: var(--w-faq);
+  margin: 0 auto;
+  padding: var(--pad-section-y) 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.heading {
+  margin: 0;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  font-size: var(--t-h2);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Background matches the page — the border does all the work. */
+.card {
+  background: var(--bg);
+  border: 1px solid var(--line-10);
+  border-radius: var(--r-faq);
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.cardOpen {
+  border-color: var(--line-accent-35);
+}
+
+.trigger {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--fg);
+  text-align: left;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.question {
+  font-weight: 700;
+  font-size: 16.5px;
+}
+
+/* 135deg, not 45 — the plus overshoots past the x and settles. */
+.sign {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1;
+  flex: none;
+  color: var(--fg);
+  transform: rotate(0deg);
+  transition:
+    transform 0.35s var(--ease),
+    color 0.3s ease;
+}
+
+.signOpen {
+  color: var(--accent);
+  transform: rotate(135deg);
+}
+
+.body {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition:
+    max-height 0.45s var(--ease),
+    opacity 0.35s ease;
+}
+
+.answer {
+  margin: 0;
+  padding: 0 24px 22px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}

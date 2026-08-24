@@ -1,0 +1,58 @@
+/* No background — the page is black throughout. */
+.footer {
+  border-top: 1px solid var(--line-08);
+}
+
+.upper {
+  max-width: var(--w-rail);
+  margin: 0 auto;
+  padding: 56px 24px 40px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 32px;
+}
+
+.blurb {
+  margin: 16px 0 0;
+  max-width: 300px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.groupHeading {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 16px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  font-size: 14px;
+}
+
+.lower {
+  max-width: var(--w-rail);
+  margin: 0 auto;
+  padding: 20px 24px 40px;
+  border-top: 1px solid var(--line-06);
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+@media (max-width: 760px) {
+  /* Unspecified by the handoff — see README.md "Mobile layout". */
+  .upper {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 32px;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,0 +1,114 @@
+/*
+ * Every button in the design. Each hover is a 2px lift plus a green glow —
+ * there are no neutral drop shadows anywhere on this page.
+ */
+
+.base {
+  display: inline-block;
+  border-radius: var(--r-button);
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* Hero band + final CTA panel, filled. */
+.primary {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 30px;
+}
+
+.primary:hover {
+  color: var(--bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary);
+}
+
+/* Hero band + final CTA panel, outline. */
+.outline {
+  background: transparent;
+  color: var(--fg);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 16px 28px;
+  border: 1px solid var(--line-16);
+}
+
+.outline:hover {
+  color: var(--fg);
+  border-color: var(--line-40);
+  transform: translateY(-2px);
+}
+
+/* Header rail. */
+.header {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 9px 18px;
+  border-radius: var(--r-header-cta);
+}
+
+.header:hover {
+  color: var(--bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-header-cta);
+}
+
+/* Platform marquee footer. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pill:hover {
+  color: var(--bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-pill-cta);
+}
+
+/* Pricing cards: full-width block, sitting above the feature list. */
+.tier {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  padding: 13px;
+}
+
+.tierFilled {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.tierFilled:hover {
+  color: var(--bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-pro-cta);
+}
+
+.tierOutline {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--line-16);
+}
+
+/* Outline tier CTAs hold their position — only the border responds. */
+.tierOutline:hover {
+  color: var(--fg);
+  border-color: var(--line-40);
+}

@@ -1,0 +1,71 @@
+.section {
+  max-width: var(--w-section);
+  margin: 0 auto;
+  padding: var(--pad-section-y) var(--pad-section-x);
+}
+
+.header {
+  text-align: center;
+}
+
+.heading {
+  margin: 0 auto;
+  max-width: 760px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  font-size: var(--t-h2);
+  text-wrap: balance;
+}
+
+.sub {
+  max-width: 560px;
+  margin: 22px auto 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* Bare numbers — no card background or border. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+
+.cell {
+  padding: 6px 6px 0;
+  position: relative;
+}
+
+.metric {
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  font-size: var(--t-metric);
+  line-height: 0.82;
+}
+
+/* Only the first metric is green. */
+.metricAccent {
+  color: var(--accent);
+}
+
+/* The negative top margin is deliberate overlap into the numeral's leading. */
+.caption {
+  position: relative;
+  margin: -8px 0 0;
+  max-width: 240px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+@media (max-width: 760px) {
+  /* Unspecified by the handoff — see README.md "Mobile layout". */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

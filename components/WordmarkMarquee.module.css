@@ -1,0 +1,40 @@
+/*
+ * Pure texture. #232320 against true black is near-invisible by design —
+ * do not raise the contrast.
+ */
+.band {
+  overflow: hidden;
+  padding: clamp(60px, 10vh, 120px) 0;
+  margin: clamp(20px, 4vh, 50px) 0;
+  border-top: 1px solid var(--line-05);
+  border-bottom: 1px solid var(--line-05);
+}
+
+/* Two identical halves animating to -50%: the seam is invisible and there is
+   no reset jump. */
+.track {
+  display: flex;
+  width: max-content;
+  animation: mq var(--mq-dur) linear infinite;
+  will-change: transform;
+}
+
+.half {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  padding-right: 56px;
+}
+
+.word {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-size: var(--t-wordmark);
+  color: var(--wordmark);
+}
+
+.star {
+  color: var(--wordmark);
+  font-size: var(--t-wordmark-star);
+}

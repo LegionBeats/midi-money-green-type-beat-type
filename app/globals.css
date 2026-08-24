@@ -1,0 +1,212 @@
+/*
+ * Token layer for the MIDIMONEY landing page.
+ *
+ * The prototype in design_handoff_midimoney/design-reference/ has no token
+ * layer — every value is a literal inline style. These are those values,
+ * deduplicated, per design_handoff_midimoney/design-tokens.md.
+ */
+
+:root {
+  /* --- Color ------------------------------------------------------------ */
+  --bg: #000000;
+  --fg: #ffffff;
+  --accent: #4ade80;
+  --text-muted: #8a8a85;
+  --text-body: #dadad5;
+  --text-faint: #5a5a55;
+  --text-badge: #b8b8b2;
+  --icon-idle: #9a9a94;
+  --surface: #141414;
+  --surface-alt: #222222;
+  --wordmark: #232320;
+  --step-ghost: rgba(255, 255, 255, 0.06);
+  --step-ghost-accent: rgba(74, 222, 128, 0.2);
+
+  /* --- Borders and hairlines -------------------------------------------- */
+  --line-05: rgba(255, 255, 255, 0.05);
+  --line-06: rgba(255, 255, 255, 0.06);
+  --line-08: rgba(255, 255, 255, 0.08);
+  --line-10: rgba(255, 255, 255, 0.1);
+  --line-12: rgba(255, 255, 255, 0.12);
+  --line-16: rgba(255, 255, 255, 0.16);
+  --line-40: rgba(255, 255, 255, 0.4);
+  --line-accent-35: rgba(74, 222, 128, 0.35);
+  --line-accent-50: rgba(74, 222, 128, 0.5);
+
+  /* --- Gradients (the only three in the design) ------------------------- */
+  --grad-pro: radial-gradient(
+    130% 90% at 50% 0%,
+    rgba(74, 222, 128, 0.16),
+    rgba(74, 222, 128, 0.04) 55%,
+    #000000 85%
+  );
+  --grad-platform-glow: radial-gradient(
+    620px 340px at 50% 14%,
+    rgba(74, 222, 128, 0.11),
+    transparent
+  );
+  --grad-final-cta: linear-gradient(180deg, #161616, #101010);
+
+  /* --- Shadows (every one is a green glow on an accent surface) --------- */
+  --shadow-primary: 0 14px 36px rgba(74, 222, 128, 0.3);
+  --shadow-header-cta: 0 10px 26px rgba(74, 222, 128, 0.28);
+  --shadow-pill-cta: 0 12px 32px rgba(74, 222, 128, 0.4);
+  --shadow-pro-cta: 0 12px 30px rgba(74, 222, 128, 0.32);
+  --shadow-pro-card: 0 0 0 1px var(--accent), 0 24px 70px rgba(74, 222, 128, 0.2);
+
+  /* --- Radii ------------------------------------------------------------ */
+  --r-mark: 6px;
+  --r-header-cta: 9px;
+  --r-button: 11px;
+  --r-faq: 14px;
+  --r-icon-card: 16px;
+  --r-testimonial: 18px;
+  --r-pricing: 20px;
+  --r-panel: 28px;
+  --r-pill: 999px;
+
+  /* --- Type ramp -------------------------------------------------------- */
+  --t-hero-h1: clamp(32px, 6.5vw, 78px);
+  --t-hero-serif: clamp(28px, 4.6vw, 56px);
+  --t-credential: clamp(15px, 2.4vw, 28px);
+  --t-h2: clamp(30px, 5vw, 60px);
+  --t-cta-h2: clamp(34px, 6vw, 76px);
+  --t-stat: clamp(42px, 5.6vw, 80px);
+  --t-metric: clamp(56px, 7vw, 92px);
+  --t-step: clamp(96px, 12vw, 150px);
+  --t-wordmark: clamp(46px, 7vw, 96px);
+  --t-wordmark-star: clamp(30px, 4vw, 52px);
+
+  /* --- Layout ----------------------------------------------------------- */
+  --header-h: 66px;
+  --w-rail: 1180px;
+  --w-hero: 1000px;
+  --w-section: 1040px;
+  --w-faq: 820px;
+  --pad-section-y: clamp(50px, 8vh, 90px);
+  --pad-section-x: clamp(24px, 7vw, 120px);
+
+  /* --- Motion ----------------------------------------------------------- */
+  /* One curve for everything narrative: a hard decelerate. */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-dur: 0.9s;
+  --mq-dur: 34s;
+
+  /* Mobile: the four three-column grids collapse below this. Unspecified by
+     the handoff — see README.md "Mobile layout". */
+  --bp-stack: 760px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--text-muted);
+  text-decoration: none;
+  -webkit-text-fill-color: currentColor;
+}
+
+a:hover {
+  color: var(--fg);
+}
+
+button {
+  -webkit-text-fill-color: currentColor;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* --- Keyframes ---------------------------------------------------------- */
+
+/* Wordmark marquee. Two identical halves, so -50% lands on a seamless seam. */
+@keyframes mq {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollL {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollR {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes gpulse {
+  0%,
+  100% {
+    box-shadow: 0 0 4px rgba(74, 222, 128, 0.3);
+    opacity: 0.9;
+  }
+  50% {
+    box-shadow: 0 0 11px 3px rgba(74, 222, 128, 0.7);
+    opacity: 1;
+  }
+}
+
+@keyframes wordRotate {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+ * Reduced motion short-circuit.
+ *
+ * The root carries data-reduce-motion when either the `reduceMotion` prop or
+ * `prefers-reduced-motion: reduce` is set. Marquees go to `animation: none`
+ * (not a 0s duration, which would strand the track at -50%); reveal elements
+ * are rendered already-revealed by the Reveal component rather than
+ * transitioned here.
+ */
+[data-reduce-motion='true'] *,
+[data-reduce-motion='true'] *::before,
+[data-reduce-motion='true'] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
