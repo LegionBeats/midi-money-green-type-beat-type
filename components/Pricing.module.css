@@ -26,13 +26,6 @@
   color: var(--text-muted);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  align-items: start;
-}
-
 .card {
   background: transparent;
   border: 1px solid var(--line-10);
@@ -133,13 +126,4 @@
   margin-top: 32px;
   font-size: 13px;
   color: var(--text-faint);
-}
-
-@media (max-width: 760px) {
-  /* Unspecified by the handoff — see README.md "Mobile layout". */
-  .grid {
-    grid-template-columns: 1fr;
-    /* Extra room so the Pro badge never overlaps the card above it. */
-    gap: 28px;
-  }
 }

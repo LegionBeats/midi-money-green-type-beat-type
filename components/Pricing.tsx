@@ -1,5 +1,6 @@
 import { PRICING_TIERS } from '@/data/content';
 import { Cta } from './Cta';
+import { CardGrid } from './CardGrid';
 import { Reveal } from './Reveal';
 import { SectionEyebrow } from './SectionEyebrow';
 import styles from './Pricing.module.css';
@@ -19,7 +20,7 @@ export function Pricing() {
         </p>
       </Reveal>
 
-      <div className={styles.grid}>
+      <CardGrid alignStart stackedGap={40}>
         {PRICING_TIERS.map((tier) => (
           <Reveal
             key={tier.name}
@@ -67,7 +68,7 @@ export function Pricing() {
             </ul>
           </Reveal>
         ))}
-      </div>
+      </CardGrid>
 
       <p className={styles.footnote}>
         All plans include 0% commission · 7-day free trial on paid plans · Cancel anytime

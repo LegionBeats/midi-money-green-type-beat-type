@@ -1,0 +1,22 @@
+/*
+ * The one card grid. Every three-up section in the design uses it, so the
+ * responsive behaviour is defined once instead of being re-declared per
+ * section — a new section gets it by using this component.
+ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), 1fr);
+  gap: var(--grid-gap, 20px);
+}
+
+.alignStart {
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  /* Mobile is unspecified by the handoff — see README.md "Mobile layout". */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--grid-gap-stacked, 32px);
+  }
+}

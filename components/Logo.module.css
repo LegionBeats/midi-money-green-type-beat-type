@@ -8,6 +8,14 @@
   color: var(--fg);
 }
 
+@media (max-width: 760px) {
+  /* The wordmark is a 22px-tall target; give it a full row on touch without
+     changing how it looks. */
+  .logo {
+    min-height: 44px;
+  }
+}
+
 /* Plain green rounded square — there is no logo asset in this design. */
 .mark {
   width: 22px;

@@ -2,6 +2,7 @@
 
 import { HERO_STATS, type HeroStat } from '@/data/content';
 import { useCountUp } from '@/hooks/useCountUp';
+import { CardGrid } from './CardGrid';
 import { Cta } from './Cta';
 import { Reveal } from './Reveal';
 import styles from './StatsBand.module.css';
@@ -41,11 +42,11 @@ function Stat({ stat, index }: { stat: HeroStat; index: number }) {
 export function StatsBand() {
   return (
     <section className={styles.band}>
-      <div className={styles.row}>
+      <CardGrid gap={44} className={styles.row}>
         {HERO_STATS.map((stat, index) => (
           <Stat key={stat.label} stat={stat} index={index} />
         ))}
-      </div>
+      </CardGrid>
 
       <Reveal delay={260} className={styles.buttons}>
         <Cta variant="primary" href="#pricing">

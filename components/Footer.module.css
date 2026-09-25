@@ -55,4 +55,15 @@
   .brand {
     grid-column: 1 / -1;
   }
+
+  /* 14px text is a 15px-tall tap target; give each link a real row. */
+  .links {
+    gap: 0;
+  }
+
+  .links a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
 }
