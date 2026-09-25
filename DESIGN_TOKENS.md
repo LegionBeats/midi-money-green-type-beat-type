@@ -73,7 +73,7 @@ viewport width without breakpoints, then cap out at a fixed max around
 --t-cta-h2:      clamp(34px, 6vw, 76px)
 --t-stat:        clamp(42px, 5.6vw, 80px)
 --t-metric:      clamp(56px, 7vw, 92px)
---t-step:        clamp(96px, 12vw, 150px)   numbered step display digits
+--t-step:        clamp(72px, 12vw, 150px)   numbered step display digits
 --t-wordmark:    clamp(46px, 7vw, 96px)
 ```
 
@@ -107,27 +107,42 @@ once `--t-step` hits its 150px cap, and shrinks proportionally below that.
 --bp-stack: 760px      breakpoint where 3-col grids collapse to 1 col
 ```
 
-**Grid stacking pattern:** every 3-column section grid uses the same rule at
-`760px`:
+**Grid stacking pattern:** every 3-column section grid uses the shared
+`CardGrid` primitive (`components/CardGrid.tsx`), which stacks to one column
+below `760px`:
+
+```tsx
+<CardGrid columns={3} gap={20} stackedGap={32}>
+  {items.map((item) => <Card key={item.id} {...item} />)}
+</CardGrid>
+```
 
 ```css
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(var(--cols, 3), 1fr);
+  gap: var(--grid-gap, 20px);
 }
 @media (max-width: 760px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: var(--grid-gap-stacked, 32px);
   }
 }
 ```
 
-This is currently copy-pasted per section (`ThreeSteps`, `ConversionStats`,
-etc.) rather than a shared primitive. If a future project has more than a
-couple of these, worth extracting into one shared grid component instead of
-repeating the media query.
+Column count and gaps are passed as props (set as CSS custom properties), so
+the responsive behavior is defined once and every section that needs a
+multi-column grid gets it for free by using this component instead of
+re-declaring the media query.
+
+**Mobile navigation:** below `760px` the header nav collapses into a
+disclosure menu (`components/Header.tsx`) — a three-bar icon that toggles a
+panel with the nav links, closes on `Escape` or on link click.
+
+**Tap targets:** interactive elements get a `44px` minimum touch target on
+mobile (`@media (max-width: 760px)` overrides on `Cta`, `Logo`, `Footer`
+link styles) without changing their desktop sizing.
 
 ## Motion
 
@@ -166,4 +181,5 @@ one serif moment, not a whole second typeface system.
 5. Reuse the type-ramp formula (`clamp(floor, Nvw, cap)`) for any new display
    text; use the proportional-overlap trick for anything overlapping a
    scaling numeral.
-6. Reuse the `760px` grid-stacking pattern for any 3-column section.
+6. Reuse the `CardGrid` component for any multi-column section — it handles
+   the `760px` stacking breakpoint for you.
