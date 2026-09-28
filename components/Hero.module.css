@@ -102,3 +102,29 @@
     min-width: 0;
   }
 }
+
+/* Live here, not in globals.css: a CSS Module scopes the animation-name
+   this file references, so each @keyframes rule has to be scoped the same
+   way — defining them globally under the plain name never matches. */
+@keyframes gpulse {
+  0%,
+  100% {
+    box-shadow: 0 0 4px rgba(74, 222, 128, 0.3);
+    opacity: 0.9;
+  }
+  50% {
+    box-shadow: 0 0 11px 3px rgba(74, 222, 128, 0.7);
+    opacity: 1;
+  }
+}
+
+@keyframes wordRotate {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

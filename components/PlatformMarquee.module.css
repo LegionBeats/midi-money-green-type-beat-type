@@ -149,3 +149,24 @@
 .ctaWrap {
   margin-top: 30px;
 }
+
+/* Live here, not in globals.css: a CSS Module scopes the animation-name
+   this file references, so each @keyframes rule has to be scoped the same
+   way — defining them globally under the plain name never matches. */
+@keyframes scrollL {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollR {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

@@ -38,3 +38,15 @@
   color: var(--wordmark);
   font-size: var(--t-wordmark-star);
 }
+
+/* Lives here, not in globals.css: a CSS Module scopes the animation-name
+   this file references, so the @keyframes rule has to be scoped the same
+   way — defining it globally under the plain name "mq" never matches. */
+@keyframes mq {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

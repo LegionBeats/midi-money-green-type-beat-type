@@ -136,58 +136,14 @@ button {
   color: var(--bg);
 }
 
-/* --- Keyframes ---------------------------------------------------------- */
-
-/* Wordmark marquee. Two identical halves, so -50% lands on a seamless seam. */
-@keyframes mq {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes scrollL {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes scrollR {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes gpulse {
-  0%,
-  100% {
-    box-shadow: 0 0 4px rgba(74, 222, 128, 0.3);
-    opacity: 0.9;
-  }
-  50% {
-    box-shadow: 0 0 11px 3px rgba(74, 222, 128, 0.7);
-    opacity: 1;
-  }
-}
-
-@keyframes wordRotate {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/*
+ * Keyframes referenced from a CSS Module's `animation` shorthand live in
+ * that module file, not here — Next.js's CSS Modules build scopes bare
+ * animation-name identifiers to the file that references them, so a
+ * @keyframes rule defined globally under the plain name never matches and
+ * the animation silently no-ops. (Lost an hour to exactly that: mq,
+ * scrollL, scrollR, gpulse, and wordRotate all used to live here.)
+ */
 
 /*
  * Reduced motion short-circuit.
