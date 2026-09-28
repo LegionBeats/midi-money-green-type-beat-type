@@ -113,8 +113,8 @@ body = replaceOnce(
 // The dithering texture was fetched from the demo's own asset directory.
 // Skip the request and stand in a 1x1 mid-gray placeholder. Upstream's white
 // placeholder is not neutral: the shader maps the sample to noise * 2 - 1, so
-// white adds +1/255 everywhere, which linearToGamma lifts to ~5% gray — a
-// visible film over the whole canvas even with no dye.
+// white adds +1/255 everywhere, which linearToGamma lifts to a visible gray
+// film over the whole canvas even with no dye (measured rgb(25,25,25)).
 body = replaceOnce(
   body,
   'new Uint8Array([255, 255, 255])',
