@@ -111,8 +111,16 @@ body = replaceOnce(
 );
 
 // The dithering texture was fetched from the demo's own asset directory.
-// Skip the request; the 1x1 white placeholder the function already builds is
-// a fine no-op stand-in.
+// Skip the request and stand in a 1x1 mid-gray placeholder. Upstream's white
+// placeholder is not neutral: the shader maps the sample to noise * 2 - 1, so
+// white adds +1/255 everywhere, which linearToGamma lifts to ~5% gray — a
+// visible film over the whole canvas even with no dye.
+body = replaceOnce(
+  body,
+  'new Uint8Array([255, 255, 255])',
+  'new Uint8Array([128, 128, 128])',
+  'neutral dithering placeholder',
+);
 body = replaceOnce(
   body,
   "\nlet ditheringTexture = createTextureAsync('LDR_LLL1_0.png');",

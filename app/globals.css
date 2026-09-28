@@ -137,12 +137,10 @@ button {
 }
 
 /*
- * Keyframes referenced from a CSS Module's `animation` shorthand live in
- * that module file, not here — Next.js's CSS Modules build scopes bare
- * animation-name identifiers to the file that references them, so a
- * @keyframes rule defined globally under the plain name never matches and
- * the animation silently no-ops. (Lost an hour to exactly that: mq,
- * scrollL, scrollR, gpulse, and wordRotate all used to live here.)
+ * No @keyframes here. A keyframe used from a CSS Module's `animation` must be
+ * defined in that module: the build scopes the animation-name it references,
+ * so a global rule under the plain name never matches and the animation
+ * silently does nothing.
  */
 
 /*
